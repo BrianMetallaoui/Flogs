@@ -387,16 +387,18 @@ class FLog {
     String? dataLogType,
     StackTrace? stacktrace,
   ) {
+    var x = Trace.current().frames[2].member!.split(".");
+
     //check to see if className is not provided
     //then its already been taken from calling class
     if (className == null) {
-      className = Trace.current().frames[2].member!.split(".")[0];
+      className = x[0];
     }
 
     //check to see if methodName is not provided
     //then its already been taken from calling class
     if (methodName == null) {
-      methodName = Trace.current().frames[2].member!.split(".")[1];
+      methodName = x[1];
     }
 
     DateTime now = DateTime.now();
