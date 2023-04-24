@@ -1,7 +1,5 @@
 import 'package:f_logs/f_logs.dart';
 
-typedef String? StackTraceFormatter(StackTrace stackTrace);
-
 class LogsConfig {
   /// print logs in Logcat
   bool isDebuggable = true;
@@ -63,9 +61,16 @@ class LogsConfig {
   String encryptionKey = "";
 
   /// Timestamp format
-  String timestampFormat =
-      TimestampFormat.TIME_FORMAT_READABLE; //Timestamp format
+  String timestampFormat = TimestampFormat.TIME_FORMAT_READABLE;
 
-  // Configure a custom formatter for the StackTrace
-  StackTraceFormatter? stackTraceFormatter;
+  /// If true, print empty field if data is missing. fe. {field1} {field2} {} {null} {field5}
+  bool printEmpty = false;
+
+  /// Display milliseconds since epoch for timestamp field
+  bool millisecondsSinceEpochForTimestamp = false;
+
+  /// If true, removes new line '\n' signs from strings. Usable
+  /// if you are parsing logs anywhere else, and you need to keep each entry
+  /// in a single line.
+  bool removeNewLines = false;
 }
