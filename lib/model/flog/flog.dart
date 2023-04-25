@@ -194,7 +194,7 @@ class FLog {
     _getAllLogs().then((logs) {
       var buffer = StringBuffer();
 
-      if (logs.length > 0) {
+      if (logs.isNotEmpty) {
         logs.forEach((log) {
           buffer.write(Formatter.format(log, _config));
         });
@@ -388,7 +388,7 @@ class FLog {
     StackTrace? stacktrace,
   ) {
     // This variable can be ClassName.MethodName or only a function name, when it doesn't belong to a class, e.g. main()
-    var member = Trace.current().frames[3].member!;
+    var member = Trace.current().frames[2].member!;
 
     //check to see if className is not provided
     //then its already been taken from calling class
